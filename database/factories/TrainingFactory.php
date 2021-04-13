@@ -22,8 +22,8 @@ class TrainingFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->name,
-            'description' => $this->faker->text
+            'title' => $this->faker->name(),
+            'description' => $this->faker->text()
         ];
     }
 }

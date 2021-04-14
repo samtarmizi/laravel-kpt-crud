@@ -18,4 +18,16 @@ class TrainingController extends Controller
     {
         return view('trainings.create');
     }
+
+    public function store(Request $request)
+    {
+        // store to DB
+        $training = new Training();
+        $training->title = $request->title;
+        $training->description = $request->description;
+        $training->save();
+
+        // return training index
+        return redirect('/trainings');
+    }
 }

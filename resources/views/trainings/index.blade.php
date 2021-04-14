@@ -13,12 +13,16 @@
                             <th>ID</th>
                             <th>Title</th>
                             <th>Created At</th>
+                            <th>Actions</th>
                         </tr>
                         @foreach($trainings as $training)
                             <tr>
                                 <td>{{ $training->id }}</td>
                                 <td>{{ $training->title }}</td>
                                 <td>{{ $training->created_at }}</td>
+                                <td>
+                                    <a href="{{ route('training:show', $training) }}" class="btn btn-primary">Show</a>
+                                </td>
                             </tr>  
                         @endforeach
                     </table>

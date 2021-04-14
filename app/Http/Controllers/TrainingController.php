@@ -13,4 +13,9 @@ class TrainingController extends Controller
 
         return view('trainings.index', compact('trainings'));
     }
+
+    public function create()
+    {
+        return view('trainings.create');
+    }
 }

@@ -30,4 +30,11 @@ class TrainingController extends Controller
         // return training index
         return redirect()->route('training:index');
     }
+
+    public function show($id)
+    {
+        $training = Training::find($id);
+
+        return view('trainings.show', compact('training'));
+    }
 }

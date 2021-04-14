@@ -28,6 +28,6 @@ class TrainingController extends Controller
         $training->save();
 
         // return training index
-        return redirect('/trainings');
+        return redirect()->route('training:index');
     }
 }

@@ -19,7 +19,7 @@
                             <tr>
                                 <td>{{ $training->id }}</td>
                                 <td>{{ $training->title }}</td>
-                                <td>{{ $training->created_at }}</td>
+                                <td>{{ $training->created_at->diffForHumans() }}</td>
                                 <td>
                                     <a href="{{ route('training:show', $training) }}" class="btn btn-primary">Show</a>
                                     <a href="{{ route('training:edit', $training) }}" class="btn btn-success">Edit</a>

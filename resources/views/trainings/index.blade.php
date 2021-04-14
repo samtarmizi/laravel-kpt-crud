@@ -22,6 +22,7 @@
                                 <td>{{ $training->created_at }}</td>
                                 <td>
                                     <a href="{{ route('training:show', $training) }}" class="btn btn-primary">Show</a>
+                                    <a href="{{ route('training:edit', $training) }}" class="btn btn-success">Edit</a>
                                 </td>
                             </tr>  
                         @endforeach

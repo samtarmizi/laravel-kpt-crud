@@ -35,4 +35,9 @@ class TrainingController extends Controller
     {
         return view('trainings.show', compact('training'));
     }
+
+    public function edit(Training $training)
+    {
+        return view('trainings.edit', compact('training'));
+    }
 }

@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Training Edit') }}</div>
 
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{ route('training:update', $training) }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label>Title</label>

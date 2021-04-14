@@ -26,3 +26,4 @@ Route::get('/trainings/create', [App\Http\Controllers\TrainingController::class,
 Route::post('/trainings/create', [App\Http\Controllers\TrainingController::class, 'store'])->name('training:store');
 Route::get('/trainings/{training}', [App\Http\Controllers\TrainingController::class, 'show'])->name('training:show');
 Route::get('/trainings/{training}/edit', [App\Http\Controllers\TrainingController::class, 'edit'])->name('training:edit');
+Route::post('/trainings/{training}/update', [App\Http\Controllers\TrainingController::class, 'update'])->name('training:update');

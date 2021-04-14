@@ -40,4 +40,15 @@ class TrainingController extends Controller
     {
         return view('trainings.edit', compact('training'));
     }
+
+    public function update(Training $training, Request $request)
+    {
+        // update to db using new input
+        $training->title = $request->title;
+        $training->description = $request->description;
+        $training->save();
+
+        // redirect to /trainings
+        return redirect()->route('training:index');
+    }
 }

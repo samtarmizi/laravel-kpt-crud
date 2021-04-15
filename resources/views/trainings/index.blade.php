@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if( session()->has('alert-message'))
+                <div class="alert {{ session()->get('alert-type') }}">
+                    {{ session()->get('alert-message') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('Training Index') }}</div>
 
@@ -23,9 +28,15 @@
                                 <td>{{ $training->user->name }}</td>
                                 <td>{{ $training->created_at->diffForHumans() }}</td>
                                 <td>
-                                    <a href="{{ route('training:show', $training) }}" class="btn btn-primary">Show</a>
-                                    <a href="{{ route('training:edit', $training) }}" class="btn btn-success">Edit</a>
-                                     <a onclick="return confirm('Are you sure?')" href="{{ route('training:destroy', $training) }}" class="btn btn-danger">Delete</a>
+                                    @can('view', $training)
+                                        <a href="{{ route('training:show', $training) }}" class="btn btn-primary">Show</a>
+                                    @endcan
+                                    @can('update', $training)
+                                        <a href="{{ route('training:edit', $training) }}" class="btn btn-success">Edit</a>
+                                    @endcan
+                                    @can('delete', $training)
+                                        <a onclick="return confirm('Are you sure?')" href="{{ route('training:destroy', $training) }}" class="btn btn-danger">Delete</a>
+                                    @endcan
                                 </td>
                             </tr>  
                         @endforeach

@@ -9,6 +9,10 @@ class Training extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'attachment'
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\Models\User');

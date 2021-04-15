@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Training;
+use Storage;
+use File;
 
 class TrainingController extends Controller
 {
@@ -34,6 +36,17 @@ class TrainingController extends Controller
         $training->description = $request->description;
         $training->user_id = auth()->user()->id;
         $training->save();
+
+        if ($request->hasFile('attachment')) {
+            // rename
+            $filename = $training->id.'-'.date("Y-m-d").'.'.$request->attachment->getClientOriginalExtension();
+
+            // store into storage
+            Storage::disk('public')->put($filename, File::get($request->attachment));
+
+            // update row with attachment path
+            $training->update(['attachment' => $filename]);
+        }
 
         // return training index
         return redirect()->route('training:index')->with([

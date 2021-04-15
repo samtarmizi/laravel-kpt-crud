@@ -12,6 +12,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Title</th>
+                            <th>Creator</th>
                             <th>Created At</th>
                             <th>Actions</th>
                         </tr>
@@ -19,6 +20,7 @@
                             <tr>
                                 <td>{{ $training->id }}</td>
                                 <td>{{ $training->title }}</td>
+                                <td>{{ $training->user->name }}</td>
                                 <td>{{ $training->created_at->diffForHumans() }}</td>
                                 <td>
                                     <a href="{{ route('training:show', $training) }}" class="btn btn-primary">Show</a>

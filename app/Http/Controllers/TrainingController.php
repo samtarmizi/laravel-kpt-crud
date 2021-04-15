@@ -14,7 +14,8 @@ class TrainingController extends Controller
     
     public function index()
     {
-        $trainings = Training::paginate(5);
+        $user = auth()->user();
+        $trainings = $user->trainings()->paginate(5);
 
         return view('trainings.index', compact('trainings'));
     }
@@ -30,6 +31,7 @@ class TrainingController extends Controller
         $training = new Training();
         $training->title = $request->title;
         $training->description = $request->description;
+        $training->user_id = auth()->user()->id;
         $training->save();
 
         // return training index

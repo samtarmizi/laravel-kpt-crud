@@ -17,6 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/call-api', function () {
+    $response = Http::get('https://www.7timer.info/bin/astro.php?lon=113.2&lat=23.1&ac=0&unit=metric&output=json&tzshift=0');
+
+    $data = [
+        'message' => 'Successfulyy received from 7timer',
+        'data' => $response,
+    ];
+    
+    return $data;
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

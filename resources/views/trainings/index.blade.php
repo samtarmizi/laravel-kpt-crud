@@ -10,7 +10,20 @@
                 </div>
             @endif
             <div class="card">
-                <div class="card-header">{{ __('Training Index') }}</div>
+                <div class="card-header">
+                    {{ __('Training Index') }}
+
+                    <div class="float-right">
+                        <form action="{{ route('training:index') }}" method="GET">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" value="{{ request()->get('search') }}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Query</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <table class="table">

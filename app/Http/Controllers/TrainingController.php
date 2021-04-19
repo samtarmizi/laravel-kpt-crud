@@ -14,11 +14,16 @@ class TrainingController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function index(Request $request)
     {
-        $user = auth()->user();
-        // $trainings = $user->trainings()->paginate(5);
-        $trainings = Training::paginate(5);
+        if ($request->search != null) {
+            // perform searching
+            $trainings = Training::where('title', 'LIKE', '%'.$request->search.'%')
+                            ->paginate(5)
+                            ->withQueryString();
+        } else {
+            $trainings = Training::paginate(5);
+        }
 
         return view('trainings.index', compact('trainings'));
     }
